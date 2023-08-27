@@ -23,7 +23,6 @@ struct FloatingNavBar: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                
                 HStack(spacing: 16)  {
                     Spacer()
                     Button {

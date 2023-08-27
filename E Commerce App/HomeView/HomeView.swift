@@ -32,10 +32,15 @@ struct HomeView: View {
                         
                     }
                     
+                }
+                
+                VStack {
                     FloatingNavBar(selectedTab: $selectedTab)
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
+            
+            
         }
     }
 }

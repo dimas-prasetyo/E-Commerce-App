@@ -9,7 +9,7 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     
-    @Published var products = [Products]()
+    @Published var products = [Product]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     
@@ -22,7 +22,7 @@ class HomeViewModel: ObservableObject {
         errorMessage = nil
         
         let service = APIService()
-        let url = URL(string: "https://dummyjson.com/docs/products")
+        let url = URL(string: "https://dummyjson.com/products")
         
         service.fetchProducts(url: url) { [unowned self] result in
             DispatchQueue.main.async {

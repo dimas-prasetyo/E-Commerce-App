@@ -9,7 +9,7 @@ import Foundation
 
 struct APIService {
     
-    func fetchProducts(url: URL?, completion: @escaping(Result<[Products], APIError>) -> Void) {
+    func fetchProducts(url: URL?, completion: @escaping(Result<[Product], APIError>) -> Void) {
         guard let url = url else {
             let error = APIError.badURL
             completion(Result.failure(error))
@@ -24,8 +24,10 @@ struct APIService {
             } else if let data = data {
                 let decoder = JSONDecoder()
                 do {
-                    let products = try decoder.decode([Products].self, from: data)
-                    completion(Result.success(products))
+                    let products = try decoder.decode(Products.self, from: data)
+                    
+                    print(products)
+                    completion(Result.success(products.products))
                 } catch {
                     completion(Result.failure(APIError.parsing(error as? DecodingError)))
                 }

@@ -30,9 +30,7 @@ struct Products: Codable, CustomStringConvertible {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        // decodeIfPresent digunakan apabila ada kemungkinan value null
         //self.products = try container.decodeIfPresent([Product].self, forKey: .products)
-        
         self.products = try container.decode([Product].self, forKey: .products)
     
         self.total = try container.decode(Int.self, forKey: .total)

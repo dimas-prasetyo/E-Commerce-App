@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Product: Codable {
+struct Product: Codable, CustomStringConvertible, Identifiable {
+    //var description: String
+    
     
     let id: Int
     let title: String
@@ -17,7 +19,7 @@ struct Product: Codable {
     let rating: Double
     let stock: Int
     let brand: String
-    let categroy: String
+    let category: String
     let thumbnail: String
     let images: [String]
     
@@ -34,7 +36,7 @@ struct Product: Codable {
         case rating
         case stock
         case brand
-        case categroy
+        case category
         case thumbnail
         case images
     }
@@ -50,7 +52,7 @@ struct Product: Codable {
         rating = try values.decode(Double.self, forKey: .rating)
         stock = try values.decode(Int.self, forKey: .stock)
         brand = try values.decode(String.self, forKey: .brand)
-        categroy = try values.decode(String.self, forKey: .categroy)
+        category = try values.decode(String.self, forKey: .category)
         thumbnail = try values.decode(String.self, forKey: .thumbnail)
         images = try values.decode([String].self, forKey: .images)
     }
