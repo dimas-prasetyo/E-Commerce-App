@@ -9,7 +9,18 @@ import SwiftUI
 
 struct CategoryScreen: View {
     var body: some View {
-        Text("Category Screen")
+        NavigationView {
+            VStack {
+                HStack {
+                    Spacer()
+                    BoxIconButton(buttonIcon: "cart", iconSize: 24, isSelected: false)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                Spacer()
+            }
+            .background(Color("backgroundApp"))
+        }
     }
 }
 

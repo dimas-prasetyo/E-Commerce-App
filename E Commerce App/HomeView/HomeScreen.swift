@@ -11,12 +11,21 @@ struct HomeScreen: View {
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
-        List {
-            ForEach(viewModel.products) { product in
-                Text(product.title)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
+                    ForEach(viewModel.products, id: \.id) { product in
+                        NavigationLink {
+                            
+                        } label: {
+                            ProductItemView(product: product)
+                        }
+                    }
+                }
+                .padding()
             }
+            .background(Color("backgroundApp"))
         }
-        .background(Color.white) // Tambahkan ini
     }
 }
 

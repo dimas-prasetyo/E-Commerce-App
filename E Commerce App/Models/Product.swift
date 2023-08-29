@@ -8,9 +8,6 @@
 import Foundation
 
 struct Product: Codable, CustomStringConvertible, Identifiable {
-    //var description: String
-    
-    
     let id: Int
     let title: String
     let description: String
@@ -55,5 +52,35 @@ struct Product: Codable, CustomStringConvertible, Identifiable {
         category = try values.decode(String.self, forKey: .category)
         thumbnail = try values.decode(String.self, forKey: .thumbnail)
         images = try values.decode([String].self, forKey: .images)
+    }
+    
+    init(id: Int, title: String, description: String, price: Double, discountPercentage: Double, rating: Double, stock: Int, brand: String, category: String, thumbnail: String, images:[String]) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.price = price
+        self.discountPercentage = discountPercentage
+        self.rating = rating
+        self.stock = stock
+        self.brand = brand
+        self.category = category
+        self.thumbnail = thumbnail
+        self.images = images
+    }
+    
+    static func dummyProduct() -> Product {
+        return Product(
+            id: 1,
+            title: "iPhone 9",
+            description: "An apple mobile which is nothing like apple",
+            price: 549,
+            discountPercentage: 12.96,
+            rating: 4.69,
+            stock: 94,
+            brand: "Apple",
+            category: "smartphones",
+            thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+            images: ["https://i.dummyjson.com/data/products/1/1.jpg", "https://i.dummyjson.com/data/products/1/2.jpg", "https://i.dummyjson.com/data/products/1/3.jpg", "https://i.dummyjson.com/data/products/1/4.jpg"]
+        )
     }
 }

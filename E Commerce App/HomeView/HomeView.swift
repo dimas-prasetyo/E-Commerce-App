@@ -11,37 +11,32 @@ struct HomeView: View {
     @State var selectedTab: Tabs = .home
     
     var body: some View {
-        
-        NavigationView {
-            ZStack {
-                Color.white
-                
-                VStack {
-                    switch selectedTab {
-                    case .home:
-                        HomeScreen()
-                        
-                    case .category:
-                        CategoryScreen()
+        ZStack {
+            
+            VStack {
+                switch selectedTab {
+                case .home:
+                    HomeScreen()
                     
-                    case .wishlist:
-                        WishListsScreen()
-                        
-                    case .user:
-                        ProfileScreen()
-                        
-                    }
+                case .category:
+                    CategoryScreen()
+                    
+                case .wishlist:
+                    WishListsScreen()
+                    
+                case .user:
+                    ProfileScreen()
                     
                 }
                 
-                VStack {
-                    FloatingNavBar(selectedTab: $selectedTab)
-                }
             }
-            .edgesIgnoringSafeArea(.bottom)
             
-            
+            VStack {
+                FloatingNavBar(selectedTab: $selectedTab)
+            }
         }
+        .edgesIgnoringSafeArea(.bottom)
+        .background(Color("backgroundApp"))
     }
 }
 

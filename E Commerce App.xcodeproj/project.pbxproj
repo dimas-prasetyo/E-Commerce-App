@@ -22,7 +22,11 @@
 		34359BFD2A9101D000B1598D /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34359BFC2A9101D000B1598D /* ProfileScreen.swift */; };
 		34359C012A911C0800B1598D /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34359C002A911C0800B1598D /* Products.swift */; };
 		34717B662A97B03400186EC4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34717B652A97B03400186EC4 /* APIService.swift */; };
+		34B53C7D2A9CE8AF008C4ACD /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B53C7C2A9CE8AF008C4ACD /* ProductItemView.swift */; };
 		34C650D22A98E83200711706 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C650D12A98E83100711706 /* APIError.swift */; };
+		34CF6AC42A9E3861006DD4C4 /* SquareTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */; };
+		34CF6AC62A9E3E82006DD4C4 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */; };
+		34CF6AC82A9E42C7006DD4C4 /* BoxIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +46,11 @@
 		34359BFC2A9101D000B1598D /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		34359C002A911C0800B1598D /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		34717B652A97B03400186EC4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		34B53C7C2A9CE8AF008C4ACD /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
 		34C650D12A98E83100711706 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareTextButton.swift; sourceTree = "<group>"; };
+		34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxIconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,7 @@
 		34359BE72A9065FF00B1598D /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				34B53C7B2A9CE891008C4ACD /* Item */,
 				34359BED2A9069A900B1598D /* Button */,
 				34359BE82A90660A00B1598D /* NavBar */,
 			);
@@ -139,6 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				34359BEE2A9069C600B1598D /* NavBarButton.swift */,
+				34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */,
+				34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */,
+				34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -181,6 +193,14 @@
 				34C650D12A98E83100711706 /* APIError.swift */,
 			);
 			path = networking;
+			sourceTree = "<group>";
+		};
+		34B53C7B2A9CE891008C4ACD /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				34B53C7C2A9CE8AF008C4ACD /* ProductItemView.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B53C7D2A9CE8AF008C4ACD /* ProductItemView.swift in Sources */,
 				34359BEF2A9069C600B1598D /* NavBarButton.swift in Sources */,
+				34CF6AC62A9E3E82006DD4C4 /* TextButton.swift in Sources */,
 				34359C012A911C0800B1598D /* Products.swift in Sources */,
+				34CF6AC42A9E3861006DD4C4 /* SquareTextButton.swift in Sources */,
 				34359BE52A9064DD00B1598D /* HomeView.swift in Sources */,
 				34359BF32A9100CC00B1598D /* HomeScreen.swift in Sources */,
 				34359BEC2A90668900B1598D /* FloatingNavBar.swift in Sources */,
@@ -262,6 +285,7 @@
 				34359BD82A90634900B1598D /* SplashScreenView.swift in Sources */,
 				340C23602A9648E400E74578 /* HomeViewModel.swift in Sources */,
 				34359BF72A91011500B1598D /* CategoryScreen.swift in Sources */,
+				34CF6AC82A9E42C7006DD4C4 /* BoxIconButton.swift in Sources */,
 				34717B662A97B03400186EC4 /* APIService.swift in Sources */,
 				34359BD62A90634900B1598D /* E_Commerce_AppApp.swift in Sources */,
 				34359BF12A908F4200B1598D /* Product.swift in Sources */,
