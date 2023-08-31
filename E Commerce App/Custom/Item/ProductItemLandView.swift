@@ -1,16 +1,17 @@
 //
-//  ProductItemView.swift
+//  ProductItemLandView.swift
 //  E Commerce App
 //
-//  Created by Olsera on 28/08/23.
+//  Created by Olsera on 31/08/23.
 //
 
 import SwiftUI
 
-struct ProductItemView: View {
+struct ProductItemLandView: View {
     let product: Product
+    
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
             ZStack(alignment: .topLeading) {
                 AsyncImage(url: URL(string: product.thumbnail)) { phase in
                     switch phase {
@@ -20,7 +21,7 @@ struct ProductItemView: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 160, height: 160)
+                            .frame(width: 120, height: 120)
                             .cornerRadius(5)
                     case .failure:
                         Color.red
@@ -37,39 +38,40 @@ struct ProductItemView: View {
                 }
             }
             
-            Text(product.title)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(Color("blackApp"))
-                .frame(width: 160, alignment: .leading)
-            
-            
-            Text(product.category)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-                .frame(width: 160, alignment: .leading)
-            
-            HStack {
-                Text(String(format: "$%.2f", product.price))
-                    .font(.system(size: 16, weight: .semibold))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(product.category)
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.secondary)
+                
+                Text(product.title)
+                    .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(Color("blackApp"))
                 
+                Text(product.description)
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.secondary)
+                    .frame(alignment: .leading)
                 Spacer()
                 
-                Button {
+                
+                HStack {
+                    Text(String(format: "$%.2f", product.price))
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color("blackApp"))
                     
-                } label: {
-                    BoxIconButton(buttonIcon: "plus", iconSize: 12, isSelected: true)
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        TextButton(buttonText: "Buy now")
+                    }
                 }
+                .padding(.bottom, 2)
+                
             }
-            .frame(width: 160)
-            .padding(.bottom, 2)
-            
-//            HStack {
-//                ForEach(0..<5) { index in
-//                    Image(systemName: index < Int(product.rating) ? "star.fill" : "star")
-//                        .foregroundColor(.yellow)
-//                }
-//            }
+            .frame(height: 120)
+            Spacer()
         }
         .padding(10)
         .background(Color.white)
@@ -78,8 +80,8 @@ struct ProductItemView: View {
     }
 }
 
-struct ProductItemView_Previews: PreviewProvider {
+struct ProductItemLandView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemView(product: Product.dummyProduct())
+        ProductItemLandView(product: Product.dummyProduct())
     }
 }

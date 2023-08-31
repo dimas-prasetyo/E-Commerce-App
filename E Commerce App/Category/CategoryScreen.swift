@@ -70,28 +70,29 @@ struct CategoryScreen: View {
                                     }
                                 }
                             }
-                            .padding()
-                            
+                            .padding(.horizontal)
                         }
                     } else {
-                        LazyHStack(spacing: 8) {
-                            ForEach(viewModel.categories.prefix(4), id: \.id) { category in
-                                if category.icon.isEmpty {
-                                    Button {
-                                        viewModel.toggleCategorySelection(category)
-                                    } label: {
-                                        SquareTextButton(buttonText: category.name, buttonSize: 72, isSelected: category.isSelected)
-                                    }
-                                } else {
-                                    Button {
-                                        viewModel.toggleCategorySelection(category)
-                                    } label: {
-                                        BoxIconButton(buttonIcon: category.icon, iconSize: 36, isSelected: category.isSelected)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 8) {
+                                ForEach(viewModel.categories.prefix(5), id: \.id) { category in
+                                    if category.icon.isEmpty {
+                                        Button {
+                                            viewModel.toggleCategorySelection(category)
+                                        } label: {
+                                            SquareTextButton(buttonText: category.name, buttonSize: 72, isSelected: category.isSelected)
+                                        }
+                                    } else {
+                                        Button {
+                                            viewModel.toggleCategorySelection(category)
+                                        } label: {
+                                            BoxIconButton(buttonIcon: category.icon, iconSize: 36, isSelected: category.isSelected)
+                                        }
                                     }
                                 }
                             }
+                            .padding(.horizontal)
                         }
-                        .padding()
                     }
                 
                     

@@ -16,21 +16,21 @@ struct HomeScreen: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
                     ForEach(viewModel.products, id: \.id) { product in
                         NavigationLink {
-                            
+                            DetailProductView(product: product)
                         } label: {
                             ProductItemView(product: product)
                         }
                     }
+                    .padding()
                 }
-                .padding()
+                .background(Color("backgroundApp"))
             }
-            .background(Color("backgroundApp"))
         }
     }
-}
-
-struct HomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeScreen()
+    
+    struct HomeScreen_Previews: PreviewProvider {
+        static var previews: some View {
+            HomeScreen()
+        }
     }
 }

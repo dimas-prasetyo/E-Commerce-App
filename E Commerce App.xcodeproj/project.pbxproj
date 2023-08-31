@@ -30,6 +30,9 @@
 		34CF6AC42A9E3861006DD4C4 /* SquareTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */; };
 		34CF6AC62A9E3E82006DD4C4 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */; };
 		34CF6AC82A9E42C7006DD4C4 /* BoxIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */; };
+		34FAF8832AA0D2D50098EC46 /* RoundedIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF8822AA0D2D50098EC46 /* RoundedIconButton.swift */; };
+		34FAF8852AA0D8E40098EC46 /* ProductItemLandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF8842AA0D8E40098EC46 /* ProductItemLandView.swift */; };
+		34FAF8882AA0E0430098EC46 /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF8872AA0E0430098EC46 /* DetailProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareTextButton.swift; sourceTree = "<group>"; };
 		34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxIconButton.swift; sourceTree = "<group>"; };
+		34FAF8822AA0D2D50098EC46 /* RoundedIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedIconButton.swift; sourceTree = "<group>"; };
+		34FAF8842AA0D8E40098EC46 /* ProductItemLandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemLandView.swift; sourceTree = "<group>"; };
+		34FAF8872AA0E0430098EC46 /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		34359BD42A90634900B1598D /* E Commerce App */ = {
 			isa = PBXGroup;
 			children = (
+				34FAF8862AA0E0260098EC46 /* DetailProduct */,
 				34717B642A97B01800186EC4 /* networking */,
 				34359C032A911E4A00B1598D /* Services */,
 				34359BFB2A9101C100B1598D /* Profile */,
@@ -159,6 +166,7 @@
 				34CF6AC32A9E3861006DD4C4 /* SquareTextButton.swift */,
 				34CF6AC52A9E3E82006DD4C4 /* TextButton.swift */,
 				34CF6AC72A9E42C7006DD4C4 /* BoxIconButton.swift */,
+				34FAF8822AA0D2D50098EC46 /* RoundedIconButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -216,8 +224,17 @@
 			isa = PBXGroup;
 			children = (
 				34B53C7C2A9CE8AF008C4ACD /* ProductItemView.swift */,
+				34FAF8842AA0D8E40098EC46 /* ProductItemLandView.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		34FAF8862AA0E0260098EC46 /* DetailProduct */ = {
+			isa = PBXGroup;
+			children = (
+				34FAF8872AA0E0430098EC46 /* DetailProductView.swift */,
+			);
+			path = DetailProduct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +315,8 @@
 				34359BE52A9064DD00B1598D /* HomeView.swift in Sources */,
 				34359BF32A9100CC00B1598D /* HomeScreen.swift in Sources */,
 				3470A6A92A9F7B1D0049EE58 /* CategoryViewModel.swift in Sources */,
+				34FAF8852AA0D8E40098EC46 /* ProductItemLandView.swift in Sources */,
+				34FAF8882AA0E0430098EC46 /* DetailProductView.swift in Sources */,
 				34359BEC2A90668900B1598D /* FloatingNavBar.swift in Sources */,
 				34359BF92A91014500B1598D /* WishListsScreen.swift in Sources */,
 				34359BD82A90634900B1598D /* SplashScreenView.swift in Sources */,
@@ -310,6 +329,7 @@
 				3470A6A52A9F6B480049EE58 /* SearchBar.swift in Sources */,
 				34359BF12A908F4200B1598D /* Product.swift in Sources */,
 				34359BFD2A9101D000B1598D /* ProfileScreen.swift in Sources */,
+				34FAF8832AA0D2D50098EC46 /* RoundedIconButton.swift in Sources */,
 				34C650D22A98E83200711706 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

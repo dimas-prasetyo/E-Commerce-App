@@ -1,16 +1,17 @@
 //
-//  BoxIconButton.swift
+//  RoundedIconButton.swift
 //  E Commerce App
 //
-//  Created by Olsera on 29/08/23.
+//  Created by Olsera on 31/08/23.
 //
 
 import SwiftUI
 
-struct BoxIconButton: View {
+struct RoundedIconButton: View {
     let buttonIcon: String
     let iconSize: CGFloat
-    let isSelected: Bool
+    let iconColor: Color
+    let bgColor: Color
     
     var body: some View {
         let paddingIcon: CGFloat = iconSize <= 12 ? 4 : (iconSize <= 24 ? 12 : 18)
@@ -19,16 +20,16 @@ struct BoxIconButton: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: iconSize, height: iconSize)
-                .foregroundColor(isSelected ? Color.white : Color("blackApp"))
+                .foregroundColor(iconColor)
         }
         .padding(paddingIcon)
-        .background(isSelected ? Color("primaryApp") : Color.white)
-        .cornerRadius(6)
+        .background(bgColor)
+        .clipShape(Capsule())
     }
 }
 
-struct BoxIconButton_Previews: PreviewProvider {
+struct RoundedIconButton_Previews: PreviewProvider {
     static var previews: some View {
-        BoxIconButton(buttonIcon: "house.fill", iconSize: 24, isSelected: true)
+        RoundedIconButton(buttonIcon: "house.fill", iconSize: 24, iconColor: Color(.white), bgColor: Color("primaryApp"))
     }
 }

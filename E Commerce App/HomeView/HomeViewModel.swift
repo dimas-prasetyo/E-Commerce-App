@@ -20,15 +20,16 @@ class HomeViewModel: ObservableObject {
     func fetchAllProducts() {
         isLoading = true
         errorMessage = nil
-        
+
         let service = APIService()
         let url = URL(string: "https://dummyjson.com/products")
-        
+
         service.fetchProducts(url: url) { [unowned self] result in
             DispatchQueue.main.async {
                 self.isLoading = false
                 switch result {
                 case.failure(let error):
+                    print(error)
                     self.errorMessage = error.loacalizedDescription
                     print(error)
                 case.success(let products):
