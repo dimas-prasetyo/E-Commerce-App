@@ -13,24 +13,36 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
+                LazyVStack {
                     ForEach(viewModel.products, id: \.id) { product in
                         NavigationLink {
                             DetailProductView(product: product)
                         } label: {
-                            ProductItemView(product: product)
+                            ProductItemLandView(product: product)
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                 }
-                .background(Color("backgroundApp"))
+//                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
+//                    ForEach(viewModel.products, id: \.id) { product in
+//                        NavigationLink {
+//                            DetailProductView(product: product)
+//                        } label: {
+//                            ProductItemView(product: product)
+//                        }
+//                    }
+//                    .padding()
+//                }
             }
+            .background(Color("backgroundApp"))
         }
     }
     
     struct HomeScreen_Previews: PreviewProvider {
         static var previews: some View {
             HomeScreen()
+                .environmentObject(HomeViewModel())
         }
     }
 }

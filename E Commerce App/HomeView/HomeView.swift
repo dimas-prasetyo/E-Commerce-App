@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var selectedTab: Tabs = .home
+    @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         ZStack {
@@ -32,11 +33,14 @@ struct HomeView: View {
             }
             
             VStack {
-                FloatingNavBar(selectedTab: $selectedTab)
+                if viewModel.showFloatingNavbar {
+                    FloatingNavBar(selectedTab: $selectedTab)
+                }
             }
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Color("backgroundApp"))
+        .environmentObject(viewModel)
     }
 }
 

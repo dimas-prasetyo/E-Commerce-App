@@ -8,7 +8,7 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    
+    @Published var showFloatingNavbar: Bool = true
     @Published var products = [Product]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil

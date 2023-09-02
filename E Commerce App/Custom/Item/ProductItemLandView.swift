@@ -64,7 +64,7 @@ struct ProductItemLandView: View {
                     Button {
                         
                     } label: {
-                        TextButton(buttonText: "Buy now")
+                        TextButton(buttonText: "Buy now", textColor: Color.white, textSize: 12, bgColor: Color("primaryApp"), icon: nil)
                     }
                 }
                 .padding(.bottom, 2)
