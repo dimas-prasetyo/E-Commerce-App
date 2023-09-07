@@ -43,10 +43,18 @@ struct DetailsProductScreen: View {
                     .foregroundColor(Color("primaryApp"))
             }
             
-            Text(String(format: "%.2f", product.discountPercentage))
-                .font(.system(size: 12))
-                .foregroundColor(Color.gray)
-                .padding(.bottom)
+            HStack {
+                Text(String(format: "$%.2f", viewModel.originalPrice))
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.gray)
+                    .padding(.bottom)
+                    .strikethrough(true, color: Color("primaryApp"))
+                
+                Text(String(format: "$%.2f", product.price))
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.gray)
+                    .padding(.bottom)
+            }
             
         }
         

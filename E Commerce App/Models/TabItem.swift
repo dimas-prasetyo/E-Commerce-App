@@ -13,9 +13,9 @@ struct TabItem {
     var iconName: String?
     var content: AnyView
     
-    static func getDetailProductTabView() -> [TabItem] {
+    static func getDetailProductTabView(comments: [Comment]) -> [TabItem] {
         return [
         TabItem(title: "Details Product", iconName: nil, content: AnyView(DetailsProductScreen())),
-        TabItem(title: "Product Reviews", iconName: nil, content: AnyView(ProfileScreen()))]
+        TabItem(title: "Product Reviews", iconName: nil, content: AnyView(DetailReviewsScreen(comments: comments)))]
     }
 }

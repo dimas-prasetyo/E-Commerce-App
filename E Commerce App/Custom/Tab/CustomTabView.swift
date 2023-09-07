@@ -50,7 +50,7 @@ struct CustomTabView: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabView(tabItems: TabItem.getDetailProductTabView())
+        CustomTabView(tabItems: TabItem.getDetailProductTabView(comments: Comment.dummyComments()))
             .environmentObject(DetailProductViewModel())
     }
 }

@@ -33,7 +33,8 @@ struct DetailProductView: View {
             ScrollView {
                 VStack {
                     CarouselGroupImageView(product: product)
-                    let tabItems = TabItem.getDetailProductTabView()
+                    let comments = Comment.dummyComments()
+                    let tabItems = TabItem.getDetailProductTabView(comments: comments)
                     CustomTabView(tabItems: tabItems)
                 }
             }
