@@ -51,4 +51,13 @@ class DetailProductViewModel: ObservableObject {
             }
         }
     }
+    
+    func transformValueIdProduct(_ value: Int) -> String {
+        if value < 100 {
+            return String(value)
+        } else {
+            let remainder = (value - 1) % 100
+            return String(remainder + 1)
+        }
+    }
 }

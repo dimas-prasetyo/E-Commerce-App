@@ -25,7 +25,6 @@ struct ProgressBar: View {
                     .foregroundColor(Color("primaryApp"))
             }
         }
-        .padding(.horizontal)
     }
 }
 

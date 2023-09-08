@@ -48,9 +48,12 @@ struct DetailReviewsScreen: View {
                                 HStack {
                                     let progress = Comment.divideIntegers(count, 50)
                                     ProgressBar(progress: progress)
+                                        .frame(alignment: .center)
+                                    
                                     Text("\(Int(count))")
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundColor(Color("primaryApp"))
+                                        .frame(alignment: .center)
                                 }
                             }
                             

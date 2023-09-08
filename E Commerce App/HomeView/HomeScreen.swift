@@ -9,11 +9,19 @@ import SwiftUI
 
 struct HomeScreen: View {
     @StateObject var viewModel = HomeViewModel()
+    @State var inputText: String = ""
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
+                    HStack {
+                        SearchBar(inputText: $inputText)
+                        BoxIconButton(buttonIcon: "cart", iconSize: 24, isSelected: false)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    
                     ForEach(viewModel.products, id: \.id) { product in
                         NavigationLink {
                             DetailProductView(product: product)
@@ -23,26 +31,26 @@ struct HomeScreen: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
+                    
                 }
-//                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
-//                    ForEach(viewModel.products, id: \.id) { product in
-//                        NavigationLink {
-//                            DetailProductView(product: product)
-//                        } label: {
-//                            ProductItemView(product: product)
-//                        }
-//                    }
-//                    .padding()
-//                }
             }
             .background(Color("backgroundApp"))
+        }
+        .onAppear{
+            viewModel.fetchAllProducts()
+        }
+        .onChange(of: inputText) { newValue in
+            if !newValue.isEmpty {
+                viewModel.searchProduct(query: newValue)
+            } else {
+                viewModel.fetchAllProducts()
+            }
         }
     }
     
     struct HomeScreen_Previews: PreviewProvider {
         static var previews: some View {
             HomeScreen()
-                .environmentObject(HomeViewModel())
         }
     }
 }

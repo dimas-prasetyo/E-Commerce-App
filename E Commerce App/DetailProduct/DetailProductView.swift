@@ -33,8 +33,9 @@ struct DetailProductView: View {
             ScrollView {
                 VStack {
                     CarouselGroupImageView(product: product)
-                    let comments = Comment.dummyComments()
-                    let tabItems = TabItem.getDetailProductTabView(comments: comments)
+                    //let comments = Comment.dummyComments()
+                    
+                    let tabItems = TabItem.getDetailProductTabView(comments: viewModel.comments)
                     CustomTabView(tabItems: tabItems)
                 }
             }
@@ -67,6 +68,7 @@ struct DetailProductView: View {
             mainViewModel.showFloatingNavbar = false
             //viewModel.product = product
             viewModel.setProduct(selectedProduct: product)
+            viewModel.fetchProductComments(producttId: viewModel.transformValueIdProduct(product.id))
         }
         .onDisappear {
             mainViewModel.showFloatingNavbar = true
