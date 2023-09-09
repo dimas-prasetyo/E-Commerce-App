@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProductItemLandView: View {
-    let product: Product
+    @EnvironmentObject var viewModel: HomeViewModel
+    @Binding var product: Product
     
     var body: some View {
         HStack {
@@ -31,10 +32,9 @@ struct ProductItemLandView: View {
                 }
                 
                 Button {
-                    
+                    product.isFavorite.toggle()
                 } label: {
-                    RoundedIconButton(buttonIcon: "heart.fill", iconSize: 14, iconColor: Color.white, bgColor: Color.pink)
-                        .padding(4)
+                    FavoriteButton(iconSize: 14, isFavorite: product.isFavorite)
                 }
             }
             
@@ -62,7 +62,7 @@ struct ProductItemLandView: View {
                     Spacer()
                     
                     Button {
-                        
+                        viewModel.addProductCart(product: product)
                     } label: {
                         TextButton(buttonText: "Buy now", textColor: Color.white, textSize: 12, bgColor: Color("primaryApp"), icon: nil)
                     }
@@ -82,6 +82,7 @@ struct ProductItemLandView: View {
 
 struct ProductItemLandView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemLandView(product: Product.dummyProduct())
+        ProductItemLandView(product: .constant(Product.dummyProduct()))
+            .environmentObject(HomeViewModel())
     }
 }

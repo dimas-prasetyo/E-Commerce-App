@@ -6,16 +6,30 @@
 //
 
 import Foundation
+import RealmSwift
 
 class HomeViewModel: ObservableObject {
     @Published var showFloatingNavbar: Bool = true
     @Published var products = [Product]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
+    @Published var productCartCount: Int = 0
     
 //    init() {
 //        fetchAllProducts()
 //    }
+    private var realm: Realm
+    @Published var productCarts: Results<ItemCart>?
+
+    init() {
+        do {
+            realm = try Realm()
+            productCarts = realm.objects(ItemCart.self)
+            productCartCount = productCarts?.count ?? 0
+        } catch {
+            fatalError("Failed to initialize Realm: \(error.localizedDescription)")
+        }
+    }
     
     func fetchAllProducts() {
         isLoading = true
@@ -60,5 +74,34 @@ class HomeViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func addProductCart(product: Product) {
+        if let itemCart = getProductFromDatabase(productId: product.id) {
+                try? realm.write {
+                    itemCart.quantity += 1
+                    itemCart.amountPrice = Double(itemCart.quantity) * product.price
+                }
+            } else {
+                let newItemCart = ItemCart()
+                newItemCart.productId = product.id
+                newItemCart.quantity = 1
+                newItemCart.amountPrice = product.price
+                newItemCart.isSelected = false
+                
+                do {
+                    try realm.write {
+                        realm.add(newItemCart)
+                    }
+                } catch {
+                    fatalError("Failed to add task: \(error.localizedDescription)")
+                }
+            }
+            productCartCount = productCarts?.count ?? 0
+    }
+    
+    
+    func getProductFromDatabase(productId: Int) -> ItemCart? {
+        return realm.objects(ItemCart.self).filter("productId == %@", productId).first
     }
 }

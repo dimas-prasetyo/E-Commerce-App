@@ -9,15 +9,22 @@ import SwiftUI
 
 struct CategoryScreen: View {
     @StateObject var viewModel = CategoryViewModel()
+    @ObservedObject var homeViewModel = HomeViewModel()
     @State var inputText: String = ""
     @State var isShowAllCategories: Bool = false
+    @State var cartItem: Int = 6
     
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     SearchBar(inputText: $inputText)
-                    BoxIconButton(buttonIcon: "cart", iconSize: 24, isSelected: false)
+                    NavigationLink {
+                        
+                    } label: {
+                        CartButton(cartItem: $homeViewModel.productCartCount)
+                        //CartButton(cartItem: cartItem)
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 12)
@@ -93,11 +100,11 @@ struct CategoryScreen: View {
                 
                 ScrollView {
                     LazyVStack {
-                        ForEach(viewModel.products, id: \.id) { product in
+                        ForEach(viewModel.products.indices, id: \.self) { index in 
                             NavigationLink {
-                                DetailProductView(product: product)
+                                DetailProductView(product: viewModel.products[index])
                             } label: {
-                                ProductItemLandView(product: product)
+                                ProductItemLandView( product: $viewModel.products[index])
                             }
                         }
                         .padding(.horizontal)
@@ -110,15 +117,25 @@ struct CategoryScreen: View {
             }
         }
         .onAppear{
-            
             viewModel.categories = viewModel.allCategories()
-                
             if let firstCategory = viewModel.categories.first {
                 viewModel.selectedCategory = firstCategory
                 viewModel.toggleCategorySelection(firstCategory)
                 }
                 //fetchAllProducts()
         }
+        .onChange(of: inputText) { newValue in
+            if !newValue.isEmpty {
+                viewModel.searchProduct(query: inputText)
+            } else {
+                if viewModel.selectedCategory?.code != "all" {
+                    viewModel.getProductByCategory()
+                } else {
+                    viewModel.fetchAllProducts()
+                }
+            }
+        }
+        .environmentObject(homeViewModel)
     }
 }
 

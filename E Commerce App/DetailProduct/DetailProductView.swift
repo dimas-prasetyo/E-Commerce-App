@@ -66,7 +66,6 @@ struct DetailProductView: View {
         .background(Color("backgroundApp"))
         .onAppear {
             mainViewModel.showFloatingNavbar = false
-            //viewModel.product = product
             viewModel.setProduct(selectedProduct: product)
             viewModel.fetchProductComments(producttId: viewModel.transformValueIdProduct(product.id))
         }
@@ -80,7 +79,8 @@ struct DetailProductView: View {
 
 struct DetailProductView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailProductView(product: Product.dummyProduct())
+        let product = Product.dummyProduct()
+        DetailProductView(product: product)
             .environmentObject(MainViewModel())
     }
 }

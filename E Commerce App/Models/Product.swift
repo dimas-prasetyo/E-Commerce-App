@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Product: Codable, CustomStringConvertible, Identifiable {
     let id: Int
@@ -19,6 +20,7 @@ struct Product: Codable, CustomStringConvertible, Identifiable {
     let category: String
     let thumbnail: String
     let images: [String]
+    var isFavorite: Bool = false
     
 //    var description: String {
 //        return ""
@@ -52,9 +54,10 @@ struct Product: Codable, CustomStringConvertible, Identifiable {
         category = try values.decode(String.self, forKey: .category)
         thumbnail = try values.decode(String.self, forKey: .thumbnail)
         images = try values.decode([String].self, forKey: .images)
+        isFavorite = false
     }
     
-    init(id: Int, title: String, description: String, price: Double, discountPercentage: Double, rating: Double, stock: Int, brand: String, category: String, thumbnail: String, images:[String]) {
+    init(id: Int, title: String, description: String, price: Double, discountPercentage: Double, rating: Double, stock: Int, brand: String, category: String, thumbnail: String, images:[String], isFavorite: Bool) {
         self.id = id
         self.title = title
         self.description = description
@@ -66,6 +69,7 @@ struct Product: Codable, CustomStringConvertible, Identifiable {
         self.category = category
         self.thumbnail = thumbnail
         self.images = images
+        self.isFavorite = isFavorite
     }
     
     static func dummyProduct() -> Product {
@@ -80,7 +84,9 @@ struct Product: Codable, CustomStringConvertible, Identifiable {
             brand: "Apple",
             category: "smartphones",
             thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-            images: ["https://i.dummyjson.com/data/products/1/1.jpg", "https://i.dummyjson.com/data/products/1/2.jpg", "https://i.dummyjson.com/data/products/1/3.jpg", "https://i.dummyjson.com/data/products/1/4.jpg"]
+            images: ["https://i.dummyjson.com/data/products/1/1.jpg", "https://i.dummyjson.com/data/products/1/2.jpg", "https://i.dummyjson.com/data/products/1/3.jpg", "https://i.dummyjson.com/data/products/1/4.jpg"],
+            isFavorite: false
         )
     }
+
 }

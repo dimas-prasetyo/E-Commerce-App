@@ -10,7 +10,7 @@ import SwiftUI
 struct CarouselGroupImageView: View {
     @State private var selectedImageIndex = 0
     //let images: [String]
-    let product: Product
+    var product: Product
     
     var body: some View {
         VStack {
@@ -46,10 +46,9 @@ struct CarouselGroupImageView: View {
                 Spacer()
                 
                 Button {
-                    
+                    //product.isFavorite.toggle()
                 } label: {
-                    RoundedIconButton(buttonIcon: "heart.fill", iconSize: 18, iconColor: Color.white, bgColor: Color.pink)
-                        .padding(4)
+                    FavoriteButton(iconSize: 18, isFavorite: product.isFavorite)
                 }
             }
             .padding(.vertical)

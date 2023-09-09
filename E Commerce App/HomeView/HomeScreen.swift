@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeScreen: View {
     @StateObject var viewModel = HomeViewModel()
     @State var inputText: String = ""
+    //@Binding var cartItem: Int
     
     var body: some View {
         NavigationView {
@@ -17,16 +19,21 @@ struct HomeScreen: View {
                 LazyVStack {
                     HStack {
                         SearchBar(inputText: $inputText)
-                        BoxIconButton(buttonIcon: "cart", iconSize: 24, isSelected: false)
+                        NavigationLink {
+                            
+                        } label: {
+                            CartButton(cartItem: $viewModel.productCartCount)
+                            //Text("\(viewModel.productWishListCount)")
+                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 12)
                     
-                    ForEach(viewModel.products, id: \.id) { product in
+                    ForEach(viewModel.products.indices, id: \.self) { index in
                         NavigationLink {
-                            DetailProductView(product: product)
+                            DetailProductView(product: viewModel.products[index])
                         } label: {
-                            ProductItemLandView(product: product)
+                            ProductItemLandView(product: $viewModel.products[index])
                         }
                     }
                     .padding(.horizontal)
@@ -46,6 +53,7 @@ struct HomeScreen: View {
                 viewModel.fetchAllProducts()
             }
         }
+        .environmentObject(viewModel)
     }
     
     struct HomeScreen_Previews: PreviewProvider {

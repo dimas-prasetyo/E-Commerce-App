@@ -13,6 +13,7 @@ class CategoryViewModel: ObservableObject {
     @Published var products = [Product]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
+    @Published var filteredProducts = [Product]()
     
     
     @Published var selectedCategory: Category? {
@@ -75,7 +76,7 @@ class CategoryViewModel: ObservableObject {
         errorMessage = nil
 
         let service = APIService()
-        let url = URL(string: "https://dummyjson.com/products/category/\(selectedCategory?.name ?? "")")
+        let url = URL(string: "https://dummyjson.com/products/category/\(selectedCategory?.code ?? "")")
         
         service.fetchProducts(url: url) { [unowned self] result in
             DispatchQueue.main.async {
@@ -112,5 +113,12 @@ class CategoryViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func searchProduct(query: String) {
+        filteredProducts = products.filter { product in
+            return product.title.lowercased().contains(query.lowercased())
+        }
+        self.products = filteredProducts
     }
 }
