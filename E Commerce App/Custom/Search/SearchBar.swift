@@ -22,6 +22,17 @@ struct SearchBar: View {
                 .frame(height: 24)
                 .padding(.vertical, 14)
                 .foregroundColor(Color("blackApp"))
+            
+            if (!inputText.isEmpty) {
+                Button {
+                    inputText = ""
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color("blackApp"))
+                        .frame(width: 24, height: 24)
+                        .padding(.vertical, 14)
+                }
+            }
         }
         .padding(.horizontal)
         .background(Color(.white))

@@ -19,13 +19,6 @@ class DetailProductViewModel: ObservableObject {
     }
     
     var originalPrice: Double {
-//        if let product = product {
-//            let originalPrice = product.price / ((100 - product.discountPercentage) / 100)
-//            return originalPrice
-//        } else {
-//            return 0.0
-//        }
-        
         let originalPrice = product.price / ((100 - product.discountPercentage) / 100)
         return originalPrice
     }
@@ -37,7 +30,7 @@ class DetailProductViewModel: ObservableObject {
         let service = APIService()
         let url = URL(string: "https://dummyjson.com/comments/post/\(producttId)")
 
-        service.fetch([Comment].self, url: url) { [unowned self] (result: Result<[Comment], APIError>) in
+        service.fetchComments(url: url) { [unowned self] result in
             DispatchQueue.main.async {
                 self.isLoading = false
                 switch result {
@@ -51,6 +44,7 @@ class DetailProductViewModel: ObservableObject {
             }
         }
     }
+    
     
     func transformValueIdProduct(_ value: Int) -> String {
         if value < 100 {

@@ -11,6 +11,7 @@ import RealmSwift
 class HomeViewModel: ObservableObject {
     @Published var showFloatingNavbar: Bool = true
     @Published var products = [Product]()
+    @Published var newProducts = [Product]()
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     @Published var productCartCount: Int = 0
@@ -48,6 +49,23 @@ class HomeViewModel: ObservableObject {
                     print(error)
                 case.success(let products):
                     self.products = products
+                }
+            }
+        }
+    }
+    
+    func fetchNewArrivalsProducts() {
+        let service = APIService()
+        let url = URL(string: "https://dummyjson.com/products/category/furniture")
+
+        service.fetchProducts(url: url) { [unowned self] result in
+            DispatchQueue.main.async {
+                //self.isLoading = false
+                switch result {
+                case.failure(let error):
+                    print(error)
+                case.success(let products):
+                    self.newProducts = products
                 }
             }
         }

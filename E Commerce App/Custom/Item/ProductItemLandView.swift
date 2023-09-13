@@ -18,6 +18,7 @@ struct ProductItemLandView: View {
                     switch phase {
                     case .empty:
                         Color.gray
+                            .frame(width: 120, height: 120)
                     case .success(let image):
                         image
                             .resizable()
@@ -26,8 +27,10 @@ struct ProductItemLandView: View {
                             .cornerRadius(5)
                     case .failure:
                         Color.red
+                            .frame(width: 120, height: 120)
                     @unknown default:
                         Color.gray
+                            .frame(width: 120, height: 120)
                     }
                 }
                 
@@ -64,7 +67,7 @@ struct ProductItemLandView: View {
                     Button {
                         viewModel.addProductCart(product: product)
                     } label: {
-                        TextButton(buttonText: "Buy now", textColor: Color.white, textSize: 12, bgColor: Color("primaryApp"), icon: nil)
+                        TextButton(buttonText: "Add to cart", textColor: Color.white, textSize: 12, bgColor: Color("primaryApp"), icon: "plus")
                     }
                 }
                 .padding(.bottom, 2)
@@ -76,7 +79,7 @@ struct ProductItemLandView: View {
         .padding(10)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4)
+        .shadow(color: Color.secondary.opacity(0.5), radius: 5, x: 5, y: 5)
     }
 }
 

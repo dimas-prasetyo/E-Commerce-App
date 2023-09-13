@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ProductItemView: View {
-    let product: Product
+    @EnvironmentObject var viewModel: HomeViewModel
+    @Binding var product: Product
+    
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .topLeading) {
@@ -16,6 +18,7 @@ struct ProductItemView: View {
                     switch phase {
                     case .empty:
                         Color.gray
+                            .frame(width: 160, height: 160)
                     case .success(let image):
                         image
                             .resizable()
@@ -24,16 +27,17 @@ struct ProductItemView: View {
                             .cornerRadius(5)
                     case .failure:
                         Color.red
+                            .frame(width: 160, height: 160)
                     @unknown default:
                         Color.gray
+                            .frame(width: 160, height: 160)
                     }
                 }
                 
                 Button {
-                    
+                    product.isFavorite.toggle()
                 } label: {
-                    RoundedIconButton(buttonIcon: "heart.fill", iconSize: 14, iconColor: Color.white, bgColor: Color.pink)
-                        .padding(4)
+                    FavoriteButton(iconSize: 14, isFavorite: product.isFavorite)
                 }
             }
             
@@ -56,7 +60,7 @@ struct ProductItemView: View {
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.addProductCart(product: product)
                 } label: {
                     BoxIconButton(buttonIcon: "plus", iconSize: 12, isSelected: true)
                 }
@@ -64,22 +68,17 @@ struct ProductItemView: View {
             .frame(width: 160)
             .padding(.bottom, 2)
             
-//            HStack {
-//                ForEach(0..<5) { index in
-//                    Image(systemName: index < Int(product.rating) ? "star.fill" : "star")
-//                        .foregroundColor(.yellow)
-//                }
-//            }
         }
         .padding(10)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4)
+        .shadow(color: Color.secondary.opacity(0.5), radius: 5, x: 5, y: 5)
     }
 }
 
 struct ProductItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemView(product: Product.dummyProduct())
+        ProductItemView(product:  .constant(Product.dummyProduct()))
+            .environmentObject(HomeViewModel())
     }
 }

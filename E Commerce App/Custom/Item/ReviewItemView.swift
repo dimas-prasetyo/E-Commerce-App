@@ -40,7 +40,10 @@ struct ReviewItemView: View {
         .padding(10)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4)
+        .background(
+            RoundedRectangle(cornerRadius: 10) // Menggunakan RoundedRectangle dengan corner radius 10
+                .stroke(Color.gray, lineWidth: 1))
+        //.shadow(radius: 4)
     }
 }
 
